@@ -1,0 +1,53 @@
+<head>
+    <script src="http://fb.me/react-0.13.0.js"></script>
+    <script src="http://fb.me/JSXTransformer-0.13.0.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3 target">
+
+        </div>
+    </div>
+</div>
+
+</body>
+<script type="text/jsx">
+    var Badge = React.createClass({
+        render: function(){
+            return <button className="btn btn-primary" type="button">
+                {this.props.title} <span className="badge">{this.props.number}</span>
+            </button>
+        }
+    });
+
+    var Thumbnail = React.createClass({
+       render: function() {
+           return(
+               <div className="thumbnail">
+                   <img src={this.props.imgUrl} alt="..." />
+                   <div className="caption">
+                       <h3>{this.props.header}</h3>
+                       <p>{this.props.description}</p>
+                       <p>
+                           <Badge title={this.props.title} number={this.props.number} />
+                       </p>
+                   </div>
+               </div>
+           )
+       }
+    });
+
+    var options = {
+        header: "Great kitten pics",
+        title: 'See Kittens!',
+        imgUrl: 'http://loremflickr.com/242/200/kitten',
+        description: 'Pig ground round frankfurter brisket. Beef ribs short loin shankle. Fatback shank pork belly short ribs porchetta ground round. Pig tongue strip steak short ribs ground round fatback.',
+        number: 12
+    };
+
+    var element = React.createElement(Thumbnail, options);
+
+    React.render(element, document.querySelector('.target'));
+</script>

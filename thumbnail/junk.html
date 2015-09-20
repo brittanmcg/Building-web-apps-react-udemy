@@ -1,0 +1,36 @@
+<head>
+    <script src="http://fb.me/react-0.13.0.js"></script>
+    <script src="http://fb.me/JSXTransformer-0.13.0.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+</head>
+<body>
+</body>
+<script type="text/jsx">
+    // Badge
+    var Badge = React.createClass({
+        render: function(){
+            return <button className="btn btn-primary" type="button">
+                {this.props.title} - {this.props.number}
+            </button>
+        }
+    });
+
+    // Form
+    var Form = React.createClass({
+        render: function(){
+            return <div>
+                <!--This dynamically passes the elements to the Badge class-->
+                <Badge title={this.props.title} number={this.props.number} />
+            </div>
+        }
+    });
+
+//    Can I use a JSON object?
+    options = {
+        title: 'Inbox',
+        number: 52
+    }
+
+   var form = React.createElement(Form, options); // passing options object with Form so Form can then pass it to it's children
+    React.render(form, document.body);
+</script>
